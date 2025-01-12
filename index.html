@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shanmuhapriya T's Portfolio</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: auto;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, #ffc1cc, #ffe4e6); /* Pastel pink gradient background */
+            color: #4d4d4d;
+            overflow: auto;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        header {
+            background-color: #ffb6c1; 
+            color: white;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        nav {
+            text-align: center;
+            background-color: rgba(255, 182, 193, 0.9); 
+            padding: 20px;
+            position: relative;
+            backdrop-filter: blur(8px); 
+        }
+
+        nav a {
+            color: #4d4d4d;
+            margin: 0 25px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 16px;
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+            transition: all 0.3s ease-in-out;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #ff94a6; 
+            bottom: 0;
+            left: 0;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+
+        nav a:hover {
+            color: #ff94a6; 
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        nav a:hover::before {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        section {
+            display: none; 
+            padding: 40px;
+            text-align: center;
+            min-height: 100vh;
+            background-color: rgba(255, 248, 250, 0.85);
+            border-radius: 20px;
+            opacity: 0;
+            animation: swirl 0.8s forwards;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes swirl {
+            0% {
+                transform: scale(0) rotate(0deg);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1) rotate(360deg);
+                opacity: 1;
+            }
+        }
+
+        footer {
+            background-color: #ffb6c1;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .profile, .skills, .projects, .achievements, .contact-form {
+            background-color: white;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            width: 30%;
+            min-width: 250px;
+            background: linear-gradient(135deg, #ffe4e6, #ffc1cc);
+            transition: transform 0.3s ease;
+        }
+
+        .profile:hover, .skills:hover, .projects:hover, .achievements:hover, .contact-form:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #ff94a6;
+            font-size: 2rem;
+        }
+
+        .profile img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .skills ul, .projects ul, .achievements ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .skills li, .projects li, .achievements li {
+            padding: 8px 0;
+        }
+
+        .skills li:before, .projects li:before, .achievements li:before {
+            content: "✔";
+            color: #ff94a6;
+            margin-right: 10px;
+        }
+
+        .skill-bar-container {
+            width: 100%;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            margin-top: 10px;
+            height: 20px;
+        }
+
+        .skill-bar {
+            height: 100%;
+            border-radius: 5px;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .contact-form input, .contact-form textarea, .contact-form button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .contact-form button {
+            background-color: #ff94a6;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #ffb6c1;
+        }
+
+        .glitter {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/white-diamond-pattern.png');
+            animation: glitter 1.5s infinite linear;
+            pointer-events: none;
+        }
+
+        @keyframes glitter {
+            0% { background-position: 0 0; }
+            100% { background-position: 1000px 1000px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Shanmuhapriya T</h1>
+        <p>Web Developer | Designer | Programmer</p>
+    </header>
+
+    <nav>
+        <a href="#" onclick="showSection('profile')">Profile</a>
+        <a href="#" onclick="showSection('skills')">Skills</a>
+        <a href="#" onclick="showSection('projects')">Projects</a>
+        <a href="#" onclick="showSection('achievements')">Achievements</a>
+        <a href="#" onclick="showSection('contact')">Contact</a>
+    </nav>
+
+    <section id="profile">
+        <div class="container">
+            <div class="profile">
+                <h2>Profile</h2>
+                <img src="my.png" alt="Shanmuhapriya T's Photo">
+
+                
+                <p>Hi, I'm Shanmuhapriya T, a passionate web developer with experience in building dynamic websites and applications. I have a strong background in front-end and back-end development, and I'm always looking for new challenges to solve.</p>
+                <p>I am currently studying Computer Science Engineering at Sri Krishna College of Technology. I completed my schooling at Infant Jesus Matriculation Higher Secondary School with a 92% score. My strengths include good leadership skills, event coordination, and problem-solving abilities. My CGPA is 8.5.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <div class="skills">
+                <h2>Skills</h2>
+                <ul>
+                    <li>HTML & CSS
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" style="width: 95%; background-color: #ff94a6;">95%</div>
+                        </div>
+                    </li>
+                    <li>C Programming
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" style="width: 95%; background-color: #ff94a6;">95%</div>
+                        </div>
+                    </li>
+                    <li>C++ Programming
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" style="width: 96%; background-color: #ff94a6;">96%</div>
+                        </div>
+                    </li>
+                    <li>Java
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" style="width: 90%; background-color: #ffb6c1;">90%</div>
+                        </div>
+                    </li>
+                    <li>Cloud Computing
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" style="width: 70%; background-color: #ffc1cc;">70%</div>
+                        </div>
+                    </li>
+                    <li>Git Version Control
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" style="width: 90%; background-color: #ff94a6;">90%</div>
+                        </div>
+                    </li>
+                    <li>UI/UX Design
+                        <div class="skill-bar-container">
+                            <div class="skill-bar" style="width: 80%; background-color: #ffb6c1;">80%</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <div class="projects">
+                <h2>Projects</h2>
+                <ul>
+                    <li><strong>Salon Organizer App:</strong> A responsive app built with HTML, CSS, and JavaScript.</li>
+                    <li><strong>Login Page:</strong> A simple login page created using HTML, CSS, and JavaScript for authentication.</li>
+                    <li><strong>Tic Tac Toe:</strong> A simple Java-based implementation of the Tic Tac Toe game.</li>
+                    <li><strong>To-Do List:</strong> A Java project for managing a to-do list.</li>
+                    <li><strong>Number Guess:</strong> A number guessing game built in Java.</li>
+                    <li><strong>Calculator:</strong> A simple calculator application built in Java.</li>
+                    <li><strong>Bank Management:</strong> A bank management system implemented in Java.</li>
+                    <li><strong>Library Management:</strong> A Java project to manage library books and users.</li>
+                    <li><strong>Quiz Application:</strong> A Java-based quiz app for testing knowledge.</li>
+                    <li><strong>Stopwatch:</strong> A Java project to simulate a basic stopwatch.</li>
+                    <li><strong>Login System:</strong> A simple login system using Java.</li>
+                    <li><strong>Student Management:</strong> A Java system for managing student records and information.</li>
+                    <li><strong>Login Page:</strong> A simple login page created using HTML and CSS.</li>
+                    <li><strong>Landing Page:</strong> A landing page designed using HTML and CSS.</li>
+                    <li><strong>Virtual Business Card:</strong> A virtual business card created with HTML and CSS.</li>
+                    <li><strong>Quiz:</strong> A quiz web application built using HTML, CSS, and JavaScript.</li>
+                    <li><strong>Food Blog:</strong> A food blog website designed with HTML and CSS.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements">
+        <div class="container">
+            <div class="achievements">
+                <h2>Achievements</h2>
+                <ul>
+                    <li>Completed 100 problems on LeetCode</li>
+                    <li>1st Prize in Technical Symposium conducted by Hindustan College</li>
+                    <li>Participated in IEEE Hackathons</li>
+                    <li>Elite Certification in Programming in Java from NPTEL Swayam</li>
+                    <li>Effective Writing Certification from NPTEL Swayam</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="contact-form">
+                <h2>Contact Me</h2>
+                <p>If you'd like to get in touch, feel free to reach out to me via email or through my social media links below!</p>
+                <a href="https://github.com/Shanmuuhh120" style="color: #ff94a6; margin: 0 10px; text-decoration: none;">GitHub</a>
+                <a href="http://linkedin.com/in/shanmuhapriya-t-41a54a294" style="color: #ff94a6; text-decoration: none;">LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Shanmuhapriya T. All rights reserved.</p>
+    </footer>
+
+    <div class="glitter"></div>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('section').forEach(function(section) {
+                section.style.display = 'none';
+            });
+            var section = document.getElementById(sectionId);
+            section.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
